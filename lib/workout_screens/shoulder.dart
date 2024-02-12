@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class shoulder extends StatefulWidget {
   const shoulder({super.key});
@@ -10,6 +11,13 @@ class shoulder extends StatefulWidget {
 class _shoulderState extends State<shoulder> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Shoulder Workout'),),
+      body: ListView(
+        children: [
+
+        ],
+      ),
+    );
   }
 }
