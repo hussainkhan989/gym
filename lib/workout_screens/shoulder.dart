@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:gym/screens/exersice_display_screen.dart';
 
 import '../database/database.dart';
 
@@ -39,42 +40,56 @@ class _shoulderState extends State<shoulder> {
     return StreamBuilder(stream: datastream,
         builder:(context , AsyncSnapshot snapshot){
       return snapshot.hasData
-          ? GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 1.0,
-            mainAxisSpacing: 8.0,
-          ),
+          ? ListView.builder(
+
+
+
           itemCount: snapshot.data.docs.length,
           itemBuilder: (context , index){
             DocumentSnapshot ds =  snapshot.data.docs[index];
+            final String videourl = ds['video'];
+            final String description = ds['description'];
+            final String gif = ds['gif'];
+            final String name = ds['name'];
+
+
             return  Padding(
               padding: const EdgeInsets.all(8),
-              child: Material(
-                //color: Colors.teal.shade50,
-                elevation: 10.0,
-                borderRadius: BorderRadius.circular(9),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Column(
-
-                    children: [
-                      SizedBox(
-                          width:200 ,
-                        height: 120,
-                        child: Image.network(ds['pic'] , fit: BoxFit.cover,)),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(ds['name'] , style: const TextStyle(fontSize: 18 , fontWeight: FontWeight.bold),),
-                      )
-                    ],
+              child: InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => displayscreen(videourl: videourl , gif: gif, description: description, name: name,),));
+                },
+                child: Card(
+                 // color: Colors.teal.shade50,
+                  elevation: 1.0,
+                  //borderRadius: BorderRadius.circular(9),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                            width:double.infinity ,
+                          height: 200,
+                          child: Image.network(ds['pic'] , fit: BoxFit.cover,)),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(ds['name'] , style: const TextStyle(fontSize: 18 , fontWeight: FontWeight.bold),),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 8.0),
+                          child: Row(children: [
+                           SizedBox(width: 10,), Text('Level'),SizedBox(width: 10,),Text('•'),SizedBox(width: 10,),Text('12 Minutes'),SizedBox(width: 10,),Text('•'),SizedBox(width: 10,),Text('123 Cal')
+                          ],),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
             );
 
           }, )
-          : SpinKitSpinningLines(color: Colors.black);
+          : const SpinKitSpinningLines(color: Colors.black);
 
 
         }
