@@ -37,13 +37,11 @@ class _shoulderState extends State<shoulder> {
   }
 
   Widget gymwidget(){
-    return StreamBuilder(stream: datastream,
+    return StreamBuilder(
+        stream: datastream,
         builder:(context , AsyncSnapshot snapshot){
       return snapshot.hasData
           ? ListView.builder(
-
-
-
           itemCount: snapshot.data.docs.length,
           itemBuilder: (context , index){
             DocumentSnapshot ds =  snapshot.data.docs[index];
@@ -57,7 +55,7 @@ class _shoulderState extends State<shoulder> {
               padding: const EdgeInsets.all(8),
               child: InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => displayscreen(videourl: videourl , gif: gif, description: description, name: name,),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ExerciseDisplayScreen(videourl: videourl , gif: gif, description: description, name: name,),));
                 },
                 child: Card(
                  // color: Colors.teal.shade50,

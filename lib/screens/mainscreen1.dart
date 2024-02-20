@@ -1,4 +1,6 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:gym/screens/Exercise_selection_screen.dart';
 import 'package:gym/workout_screens/Lats.dart';
 import 'package:gym/workout_screens/abs.dart';
 import 'package:gym/workout_screens/arms.dart';
@@ -31,30 +33,46 @@ class _Screen1State extends State<Screen1> {
         .of(context)
         .size
         .height * 0.7;
+
+    List<IconData>iconss = [
+       Icons.home,
+      Icons.abc,
+      Icons.access_alarm,
+      Icons.nat
+    ];
     return Scaffold(
+
+      bottomSheet: AnimatedBottomNavigationBar(
+          backgroundColor: Colors.purple.shade100,
+
+          elevation: 2,
+          splashColor: Colors.amber,
+          icons: iconss,
+          activeIndex: _selectedIndex ,
+          leftCornerRadius: 42,
+          rightCornerRadius: 42,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.sharpEdge,
+          onTap:  _onItemTapped ),
       appBar: AppBar(
+
+        elevation: 2.0,
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'NO ',
+              'G  Y M ',
               style: TextStyle(color: Colors.white),
             ),
             Text(
-              'PAIN ',
-              style: TextStyle(color: Colors.orange),
+              'F L E X ',
+              style: TextStyle(color: Colors.black),
             ),
-            Text(
-              'NO ',
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              'GAIN ',
-              style: TextStyle(color: Colors.teal),
-            ),
+
           ],
         ),
       ),
+
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -206,7 +224,7 @@ class _Screen1State extends State<Screen1> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const triceps(),
+                                  builder: (context) => const tricep(),
                                 ));
                           },
                           child: const Row(
@@ -385,8 +403,7 @@ class _Screen1State extends State<Screen1> {
         ),
       ),
 
-      bottomNavigationBar:
-      BottomNavigationBar(
+      /*bottomNavigationBar: BottomNavigationBar(
 
         //fixedColor: Colors.purple,
         items: const [
@@ -413,7 +430,7 @@ class _Screen1State extends State<Screen1> {
         unselectedItemColor: Colors.black,
         onTap: _onItemTapped,
 
-      ),
+      ),*/
     );
 
   }
@@ -427,6 +444,7 @@ class _Screen1State extends State<Screen1> {
           break;
         case 1:
         // Handle Business click
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const exselection(),));
          // Navigator.push(context, MaterialPageRoute(builder: (context) => additem(),));
           break;
         case 2:
