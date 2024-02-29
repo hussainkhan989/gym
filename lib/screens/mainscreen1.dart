@@ -36,14 +36,14 @@ class _Screen1State extends State<Screen1> {
 
     List<IconData>iconss = [
        Icons.home,
-      Icons.abc,
+      Icons.sports_sharp,
       Icons.access_alarm,
       Icons.nat
     ];
     return Scaffold(
 
       bottomSheet: AnimatedBottomNavigationBar(
-          backgroundColor: Colors.purple.shade100,
+          backgroundColor: Colors.blue.shade600,
 
           elevation: 2,
           splashColor: Colors.amber,
@@ -444,7 +444,7 @@ class _Screen1State extends State<Screen1> {
           break;
         case 1:
         // Handle Business click
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const exselection(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>  exselection(),));
          // Navigator.push(context, MaterialPageRoute(builder: (context) => additem(),));
           break;
         case 2:

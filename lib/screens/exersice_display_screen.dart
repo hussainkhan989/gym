@@ -1,4 +1,3 @@
-import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -48,7 +47,7 @@ class _ExerciseDisplayScreenState extends State<ExerciseDisplayScreen> {
             ? Column(
                 children: [
                   AspectRatio(
-                    aspectRatio:  20 / 14,  //controller.value.aspectRatio,
+                    aspectRatio:  19 / 13,  //controller.value.aspectRatio,
                     child: VideoPlayer(controller),
                   ),
                 ],
@@ -138,23 +137,20 @@ class _ExerciseDisplayScreenState extends State<ExerciseDisplayScreen> {
           children: [
             SizedBox(
               width: double.infinity,
-              height: 300,
-              child: Card(
-                elevation: 2.0,
-                child: Column(
-                  //crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    videoplaying ? videoplay() : gifplay(),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Text(
-                        ' ${widget.name}',
-                        style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
+              height: 310,
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  videoplaying ? videoplay() : gifplay(),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      ' ${widget.name}',
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.bold),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Row(
@@ -176,6 +172,7 @@ class _ExerciseDisplayScreenState extends State<ExerciseDisplayScreen> {
                       });
                     },
                     icon: const Icon(Icons.play_arrow)),
+
               ],
             ),
             Padding(
@@ -183,7 +180,9 @@ class _ExerciseDisplayScreenState extends State<ExerciseDisplayScreen> {
               child: Text('Description: ${widget.description}',
                   style: const TextStyle(
                       fontSize: 15, fontStyle: FontStyle.italic)),
-            )
+            ),
+
+
           ],
         ),
       ),

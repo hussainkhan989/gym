@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gym/api/fcmapi.dart';
 import 'package:gym/screens/splash_screen.dart';
 
 void main() async {
@@ -11,6 +12,7 @@ void main() async {
           messagingSenderId: '71188142690',
           projectId: 'gym-application-33c8b',
           storageBucket: 'gym-application-33c8b.appspot.com'));
+  await Firebaseapi().initNotification();
 
   runApp(const MyApp());
 }
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         appBarTheme:  AppBarTheme(
-            backgroundColor: Colors.purple.shade200, foregroundColor: Colors.black),
+            backgroundColor: Colors.blue.shade600, foregroundColor: Colors.white),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
